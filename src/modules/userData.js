@@ -37,6 +37,19 @@ class UserData extends common_1.Common {
         return formatDatas;
     }
     /**
+     * Coin List.
+     *
+     * @param options ``` 
+     * @returns
+     * @stability stable
+     */
+    getCoinList() {
+        const res = this.signRequest('GET', '/capital/config/getall');
+        const rawData = JSON.parse(res.getBody());
+        const formatDatas = util_1.fromatData(rawData);
+        return formatDatas;
+    }
+    /**
      * Withdraw History List.
      *
      * @param options ``` 
