@@ -78,7 +78,7 @@ class UserData extends common_1.Common {
         }
         const res = this.signRequest('POST', '/capital/withdraw/apply', Object.assign(options, {
             coin: coin.toUpperCase(),
-            network: encodeURI(network),
+            network: network,
             address: address,
             amount: amount
         }));
