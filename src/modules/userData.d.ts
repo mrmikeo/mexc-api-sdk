@@ -18,4 +18,9 @@ export declare class UserData extends Common {
      * @stability stable
      */
     accountTradeList(symbol: string, options?: any): any;
+
+    withdrawHistoryList(coin: string, options?: any): any;
+
+    newWithdrawal(coin: string, network: string, amount: string, coin: string, options?: any): any;
+        
 }
