@@ -8,7 +8,13 @@ const createRequest = (config) => {
 };
 exports.createRequest = createRequest;
 const stringifyKeyValuePair = ([key, value]) => {
-    return `${key}=${encodeURIComponent(value)}`;
+    return `${key}=${encodeRFC3986URIComponent(value)}`;
+};
+const encodeRFC3986URIComponent = (str) => {
+  return encodeURIComponent(str).replace(
+    /[!'()*]/g,
+    (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`,
+  );
 };
 const removeEmptyValue = (obj) => {
     if (!(obj instanceof Object))
