@@ -23,6 +23,6 @@ export declare class UserData extends Common {
     
     withdrawHistoryList(coin: string, options?: any): any;
 
-    newWithdrawal(coin: string, network: string, address: string, amount: string, options?: any): any;
+    newWithdrawal(coin: string, network: string, address: string, amount: string, memo: string, options?: any): any;
         
 }
