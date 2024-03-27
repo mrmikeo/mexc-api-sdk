@@ -36,6 +36,43 @@ class UserData extends common_1.Common {
         const formatDatas = util_1.fromatData(rawData);
         return formatDatas;
     }
+    /**
+     * Withdraw History List.
+     *
+     * @param options ``` 
+     * @returns
+     * @stability stable
+     */
+    withdrawHistoryList(coin, options = { limit: 100 }) {
+        const res = this.signRequest('GET', '/capital/withdraw/history', Object.assign(options, {
+            coin: coin.toUpperCase()
+        }));
+        const rawData = JSON.parse(res.getBody());
+        const formatDatas = util_1.fromatData(rawData);
+        return formatDatas;
+    }
+    /**
+     * New Withdrawal.
+     *
+     * @param options ``` 
+     * @returns
+     * @stability stable
+     */
+    newWithdrawal(coin, network, address, amount, options = {}) {
+        if ([coin, network, address, amount].some(str => !str.trim())) {
+            console.assert(false, `Some params are required`);
+            return;
+        }
+        const res = this.signRequest('POST', '/capital/withdraw/apply', Object.assign(options, {
+            coin: coin.toUpperCase(),
+            network: network.toUpperCase(),
+            address: address,
+            amount: amount
+        }));
+        const rawData = JSON.parse(res.getBody());
+        const formatDatas = util_1.fromatData(rawData);
+        return formatDatas;
+    }
 }
 exports.UserData = UserData;
 _a = JSII_RTTI_SYMBOL_1;
