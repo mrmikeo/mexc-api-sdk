@@ -71,7 +71,7 @@ class UserData extends common_1.Common {
      * @returns
      * @stability stable
      */
-    newWithdrawal(coin, network, address, amount, options = {}) {
+    newWithdrawal(coin, network, address, amount, memo, options = {}) {
         if ([coin, network, address, amount].some(str => !str.trim())) {
             console.assert(false, `Some params are required`);
             return;
@@ -80,7 +80,8 @@ class UserData extends common_1.Common {
             coin: coin.toUpperCase(),
             network: network,
             address: address,
-            amount: amount
+            amount: amount,
+            memo: memo
         }));
         const rawData = JSON.parse(res.getBody());
         const formatDatas = util_1.fromatData(rawData);
